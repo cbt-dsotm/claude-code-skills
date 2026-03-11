@@ -20,11 +20,63 @@ To use your profile in future sessions: place `USER_PROFILE.md` in your project'
 
 ---
 
+## Step 0: Check for an Existing Profile
+
+Before starting the interview, search the current directory and common locations for an existing profile file. Look for any of these names (case-insensitive):
+
+- `USER_PROFILE.md`
+- `user-profile.md`
+- `PROFILE.md`
+- `profile.md`
+- `ME.md`
+- `me.md`
+- `ABOUT_ME.md`
+- `about-me.md`
+- `CLAUDE_PROFILE.md`
+- `.claude/profile.md`
+
+Also check whether `CLAUDE.md` contains a profile section (a heading like "About Me", "Who I Am", or "User Profile").
+
+**If no existing profile is found:** proceed directly to the interview (Step 1).
+
+**If an existing profile is found:** show the user the filename and first few lines so they can confirm it's theirs, then ask:
+
+> "I found `[filename]`. What would you like to do?
+>
+> 1. **Update** — go section by section, keep what's still true, refresh what's changed
+> 2. **Merge** — I'll interview you fresh and blend your new answers with the existing content
+> 3. **Replace** — start over completely, archive the old file
+> 4. **Save as new file** — run fresh and save to a different filename (I'll ask what to call it)"
+
+Then proceed based on their choice:
+
+- **Update** → go to the Update Flow below
+- **Merge** → run the full interview (Step 1), then merge results with existing content before writing
+- **Replace** → rename the existing file to `[filename].bak` before writing the new one, then run the full interview
+- **Save as new file** → ask for the filename, then run the full interview
+
+---
+
+## Update Flow
+
+Used when the user chooses "Update." Do not run the full interview. Instead:
+
+1. Read the existing profile in full.
+2. Go through each section one at a time. For each:
+   - Summarize what the current profile says about that section in 1–2 sentences.
+   - Ask: "Is this still accurate, or has anything changed?"
+   - If they say it's fine, keep it as-is.
+   - If they have updates, ask follow-up questions to capture what changed, then rewrite just that section.
+3. After all sections, ask: "Anything important that wasn't covered in any of those sections?"
+4. Write the updated file and tell the user what changed.
+
+---
+
 ## The Interview
 
 Conduct this as a conversation, not a form. Work through each section below. Ask one or two questions at a time. Listen to the answers and follow up where something is interesting or unclear before moving on. Don't rush — this is worth doing well.
 
-After all sections are complete, synthesize everything into a structured USER_PROFILE.md and write it to disk. Tell the user where it was saved and how to use it.
+After all sections are complete, synthesize everything into a structured profile and write it to disk.
 
 ---
 
@@ -97,7 +149,7 @@ Get a rough knowledge map. This helps Claude calibrate depth and find useful bri
 
 ## Output Format
 
-After completing all sections, write `USER_PROFILE.md` to disk with this structure:
+Write the profile file with this structure:
 
 ```markdown
 # USER_PROFILE.md
@@ -128,5 +180,6 @@ Write each section as prose or bullets — whatever best captures the person. Do
 
 After writing the file, tell the user:
 - Where the file was saved
+- What mode was used (new / updated / merged / replaced)
 - How to add it to a project's context (CLAUDE.md or project instructions)
 - That they can run `/profile-builder` again any time to update it
