@@ -37,7 +37,11 @@ Before starting the interview, search the current directory and common locations
 
 Also check whether `CLAUDE.md` contains a profile section (a heading like "About Me", "Who I Am", or "User Profile").
 
-**If no existing profile is found:** proceed directly to the interview (Step 1).
+**If no existing profile is found:** ask the user where to save the output before starting the interview:
+
+> "No existing profile found. Where should I save it? I'd suggest `USER_PROFILE.md` in your current directory — or tell me a different name or path."
+
+Use their answer as the output filename. Then proceed to the interview (Step 1).
 
 **If an existing profile is found:** show the user the filename and first few lines so they can confirm it's theirs, then ask:
 
